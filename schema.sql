@@ -1,17 +1,3 @@
-# Bamazon
-Pseudo Amazon terminal app using mysql
-
-Make the below table using a mysql query. The schema is below but u have to add some data to product_sales
-
-| department_id | department_name | over_head_costs | product_sales | total_profit |
-| ------------- | --------------- | --------------- | ------------- | ------------ |
-| 01            | Electronics     | 10000           | 20000         | 10000        |
-| 02            | Clothing        | 60000           | 100000        | 40000        |
-
-5. The `total_profit` column should be calculated on the fly using the difference between `over_head_costs` and `product_sales`. `total_profit` should not be stored in any database. You should use a custom alias.
-
-Use the below as a schema: 
-
 DROP DATABASE IF EXISTS bamazon;
 
 CREATE DATABASE bamazon;
@@ -24,7 +10,6 @@ CREATE TABLE products (
   department_name VARCHAR(45) NULL,
   price DECIMAL(10, 4) DEFAULT 0 NOT NULL,
   stock_quantity INT(10) NOT NULL,
-  product_sales DECIMAL(10, 4) DEFAULT 0 NOT NULL,
   PRIMARY KEY (item_id)
 );
 
