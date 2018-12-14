@@ -1,6 +1,6 @@
 const cTable = require('console.table');
-var mysql = require("mysql");
-var inquirer = require("inquirer");
+const mysql = require("mysql");
+const inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -13,13 +13,10 @@ var connection = mysql.createConnection({
     database: "bamazon"
 });
 
-
-
 connection.connect(function (err) {
     if (err) throw err;
     ask();
 });
-
 
 function displayStore() {
     connection.query("SELECT * FROM products", function (err, res) {
@@ -46,7 +43,7 @@ function ask() {
         }
         if (choice === "Add to Inventory") {
             connection.query("SELECT * FROM products", function (err, res) {
-                console.table(res) //could get it to display quite correctly here because this runs at same time as the next prompt
+                console.table(res) //couldn't get it to display quite correctly here because this runs at same time as the next prompt
             });
             addMore();
         }

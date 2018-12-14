@@ -1,6 +1,6 @@
 const cTable = require('console.table');
-var mysql = require("mysql");
-var inquirer = require("inquirer");
+const mysql = require("mysql");
+const inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -12,8 +12,6 @@ var connection = mysql.createConnection({
     password: "",
     database: "bamazon"
 });
-
-
 
 connection.connect(function (err) {
     if (err) throw err;
@@ -51,7 +49,12 @@ function ask() {
 
 function viewSales(){
     connection.query(
-        "SELECT *, (product_sales - over_head_costs) AS total_profit FROM departments JOIN (SELECT department_name, sum(product_sales) AS product_sales FROM products GROUP BY products.department_name) AS totals ON totals.department_name = departments.department_name;",
+        "SELECT departments.department_id, products.department_name, departments.department_name," +
+        " departments.over_head_costs, SUM(products.product_sales) AS product_sales," +
+        " SUM(products.product_sales) - departments.over_head_costs AS total_profit" +
+        " FROM products" +
+        " JOIN departments ON (products.department_name = departments.department_name)" +
+        " GROUP BY departments.department_id ORDER BY total_profit DESC;",
          function (err, res) {
             console.table(res)
             ask();

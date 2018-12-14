@@ -16,7 +16,7 @@ CREATE TABLE products (
 CREATE TABLE departments (
   department_id INT NOT NULL AUTO_INCREMENT,
   department_name VARCHAR(45) NULL,
-  over_head_costs VARCHAR(45) DEFAULT 0 NOT NULL,
+  over_head_costs INT (45) DEFAULT 0 NOT NULL,
   PRIMARY KEY (department_id)
 );
 
@@ -25,3 +25,6 @@ VALUES ('Toaster', 'Kitchenware', '5', '15'), ('SPAM', 'Foods', '2', '7'), ('Sof
 ('Ant Farm', 'Hobbies', '250', '32'), ('Paintball Gun', 'Hobbies', '165', '17'), ('Sparklers', 'Hobbies', '2', '689'),
 ('Orange', 'Foods', '1', '77'), ('Blender', 'Kitchenware', '26', '100'), ('Incense', 'Romance', '3', '7000'),
 ('Amazingly Uncomfortable Bed', 'Furniture', '20', '72');
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ('Hobbies', '3000'), ('Furniture', '5000'), ('Foods', '500'), ('Kitchenware', '400'), ('Romance', '250');
